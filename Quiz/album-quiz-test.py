@@ -123,8 +123,8 @@ class AlbumQuizTest:
     def login(self):
         """Login method"""
         # Get credentials from environment variables or use defaults
-        username = os.getenv('E2E_USER') or os.getenv('TEST_USER') or 'tuan1@gmail.com'
-        password = os.getenv('E2E_PASS') or os.getenv('TEST_PASS') or '123456'
+        username = os.getenv('E2E_USER') or os.getenv('TEST_USER') or 'annguyen@gmail.com'
+        password = os.getenv('E2E_PASS') or os.getenv('TEST_PASS') or '1234'
 
         print(f'🔐 Using credentials: {username} / ****')
 

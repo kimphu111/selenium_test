@@ -32,8 +32,8 @@ CONFIG = {
     },
     
     'TEST_USER': {
-        'email': os.getenv('E2E_USER', 'tuan1@gmail.com'),
-        'password': os.getenv('E2E_PASS', '123456')
+        'email': os.getenv('E2E_USER', 'annguyen@gmail.com'),
+        'password': os.getenv('E2E_PASS', '1234')
     }
 }
 

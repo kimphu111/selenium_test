@@ -12,7 +12,7 @@ options.add_argument("--log-level=3")
 driver = webdriver.Chrome(options=options)
 
 try:
-    print("👤 BẮT ĐẦU TEST PROFILE")
+    print("BẮT ĐẦU TEST PROFILE")
     
     # 1. Đăng nhập
     driver.get("http://localhost:4200/auth")
@@ -29,14 +29,14 @@ try:
     login_button.click()
     
     WebDriverWait(driver, 10).until(EC.url_contains("/home"))
-    print("✅ Đăng nhập thành công!")
+    print("Đăng nhập thành công!")
 
     # 2. Mở trang profile
     driver.get("http://localhost:4200/profile")
     WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.CLASS_NAME, "profile-container"))
     )
-    print("✅ Đã mở trang profile")
+    print("Đã mở trang profile")
     
     # 3. Mở form chỉnh sửa
     buttons = driver.find_elements(By.TAG_NAME, "button")
@@ -44,7 +44,7 @@ try:
         try:
             if "Chỉnh sửa" in button.text or "edit" in button.text.lower():
                 driver.execute_script("arguments[0].click();", button)
-                print("✅ Đã mở form chỉnh sửa")
+                print("Đã mở form chỉnh sửa")
                 break
         except:
             continue
@@ -65,9 +65,9 @@ try:
             element = driver.find_element(By.ID, field_id)
             element.clear()
             element.send_keys(value)
-            print(f"✅ Đã điền {field_id}")
+            print(f"Đã điền {field_id}")
         except:
-            print(f"❌ Không tìm thấy {field_id}")
+            print(f"Không tìm thấy {field_id}")
     
         # 5. Upload ảnh (nếu có)
     image_path = r"C:\Users\Admin\Pictures\Screenshots\z6565935812881_69ca1b0c865063c52be39aeb43ef1b5a.jpg"
@@ -99,24 +99,24 @@ try:
             # Upload file
             file_input = driver.find_element(By.XPATH, "//input[@type='file']")
             file_input.send_keys(image_path)
-            print("✅ Đã thay đổi avatar")
+            print("Đã thay đổi avatar")
             
         except:
-            print("❌ Không thể upload ảnh")
+            print(" Không thể upload ảnh")
     
     # 6. Lưu thông tin
     save_buttons = driver.find_elements(By.XPATH, "//button[contains(text(),'Save')]")
     if save_buttons:
         driver.execute_script("arguments[0].click();", save_buttons[0])
-        print("✅ Đã lưu thông tin")
+        print("Đã lưu thông tin")
     else:
-        print("❌ Không tìm thấy nút Save")
+        print("Không tìm thấy nút Save")
     
     time.sleep(3)
-    print("✅ TEST HOÀN TẤT!")
+    print("TEST HOÀN TẤT!")
 
 except Exception as e:
-    print(f"❌ Lỗi: {e}")
+    print(f"Lỗi: {e}")
 
 finally:
     time.sleep(2)
