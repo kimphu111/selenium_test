@@ -1,0 +1,10 @@
+//Lệnh tạo Hub 
+java -jar selenium-server-4.34.0.jar hub
+--port 5555 dùng để chỉ định url
+
+//Lệnh tạo Node
+java -jar selenium-server-4.34.0.jar node --hub http://localhost:4444
+pattern
+java -jar selenium-server-4.34.0.jar node --hub<URL> --browser //firefox, chrome...
+
+default khi tao hub la http://localhost:4444
