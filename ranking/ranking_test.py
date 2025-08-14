@@ -32,14 +32,14 @@ try:
     WebDriverWait(driver, 10).until(
         EC.url_contains("/home")
     )
-    print("✅ Đăng nhập thành công!")
+    print("Đăng nhập thành công!")
 
     # 2. Chuyển sang trang ranking
     driver.get("http://localhost:4200/ranking")
     WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.CLASS_NAME, "rankings-container"))
     )
-    print("📊 Đã mở trang xếp hạng")
+    print(" Đã mở trang xếp hạng")
     
     # 3. Kiểm tra xếp hạng ở các level
     levels = ["mix", "easy", "medium", "hard"]
@@ -52,25 +52,25 @@ try:
             EC.element_to_be_clickable((By.XPATH, f"//button[contains(text(), '{level.capitalize()}')]"))
         )
         level_button.click()
-        print(f"👆 Đã chọn mức độ: {level}")
+        print(f" Đã chọn mức độ: {level}")
         
         # Kiểm tra hiển thị loading
         try:
             loading_text = WebDriverWait(driver, 2).until(
                 EC.presence_of_element_located((By.XPATH, "//p[contains(text(), 'Đang tải xếp hạng...')]"))
             )
-            print("⏳ Hiển thị loading khi chuyển mức độ")
+            print(" Hiển thị loading khi chuyển mức độ")
         except:
-            print("⚠️ Không thấy hiển thị loading")
+            print("Không thấy hiển thị loading")
         
         # Đợi dữ liệu tải xong
         try:
             WebDriverWait(driver, 10).until_not(
                 EC.presence_of_element_located((By.CLASS_NAME, "loading"))
             )
-            print("✅ Đã tải dữ liệu xếp hạng")
+            print("Đã tải dữ liệu xếp hạng")
         except:
-            print("⚠️ Không thấy trạng thái loading biến mất")
+            print("Không thấy trạng thái loading biến mất")
         
         # Kiểm tra có dữ liệu xếp hạng không
         ranking_items = driver.find_elements(By.CLASS_NAME, "ranking-item")
@@ -92,9 +92,9 @@ try:
                 if position < len(ranking_items):
                     try:
                         medal_img = ranking_items[position].find_element(By.XPATH, f".//img[@alt='{medal['alt']}']")
-                        print(f"✓ Huy chương {medal['name']} hiển thị cho hạng {position+1}")
+                        print(f" Huy chương {medal['name']} hiển thị cho hạng {position+1}")
                     except:
-                        print(f"✗ Không tìm thấy huy chương {medal['name']} cho hạng {position+1}")
+                        print(f" Không tìm thấy huy chương {medal['name']} cho hạng {position+1}")
             
             # Hiển thị top 5 người chơi (hoặc ít hơn nếu không đủ)
             print("\n--- Top người chơi ---")
@@ -127,7 +127,7 @@ try:
                 is_sorted_by_score = all(scores[i] >= scores[i+1] for i in range(len(scores)-1))
                 
                 if is_sorted_by_score:
-                    print("✓ Xếp hạng được sắp xếp đúng theo điểm số giảm dần")
+                    print(" Xếp hạng được sắp xếp đúng theo điểm số giảm dần")
                     
                     # Kiểm tra các trường hợp điểm bằng nhau
                     equal_score_positions = []
@@ -142,19 +142,19 @@ try:
                             print(f"Vị trí {i+1} và {j+1} có cùng điểm {scores[i]}")
                             print(f"Thời gian: {durations[i]} vs {durations[j]}")
                 else:
-                    print("✗ Xếp hạng KHÔNG được sắp xếp đúng theo điểm số giảm dần")
+                    print(" Xếp hạng KHÔNG được sắp xếp đúng theo điểm số giảm dần")
                     print("Chi tiết điểm số:")
                     for i, score in enumerate(scores):
                         print(f"Hạng {i+1}: {score} điểm")
         else:
-            print("❌ Không có dữ liệu xếp hạng để kiểm tra")
+            print(" Không có dữ liệu xếp hạng để kiểm tra")
         
         time.sleep(1)
 
-    print("\n✅ TEST BẢNG XẾP HẠNG HOÀN TẤT! ✅")
+    print("\nTEST BẢNG XẾP HẠNG HOÀN TẤT! ")
 
 except Exception as e:
-    print(f"❌ Lỗi: {e}")
+    print(f" Lỗi: {e}")
 
 finally:
     time.sleep(2)
