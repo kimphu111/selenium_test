@@ -11,7 +11,7 @@ options.add_argument("--log-level=3")
 driver = webdriver.Chrome(options=options)
 
 try:
-    print("\n🏆 BẮT ĐẦU TEST BẢNG XẾP HẠNG 🏆\n")
+    print("\nBẮT ĐẦU TEST BẢNG XẾP HẠNG\n")
     
     # 1. Đăng nhập
     driver.get("http://localhost:4200/auth")
