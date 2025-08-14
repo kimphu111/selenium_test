@@ -1,5 +1,8 @@
 # 🧪 SELENIUM TEST AUTOMATION
+pip install selenium
+pip install requests
 
+npm install selenium-webdriver
 ## 📋 TỔNG QUAN
 Dự án test tự động cho ứng dụng Angular sử dụng Selenium WebDriver và Grid.
 
@@ -10,14 +13,17 @@ Dự án test tự động cho ứng dụng Angular sử dụng Selenium WebDriv
 - Chrome, Firefox browsers
 - Angular app tại `http://localhost:4200`
 
-### Cài đặt
+### Cài đặt Python packages
 ```bash
-pip install selenium requests
-```
+# Cài đặt Selenium WebDriver
+pip install selenium
 
-### Tải Selenium Grid
-```bash
-# Tải selenium-server-4.35.0.jar vào thư mục Grid/
+# Cài đặt requests (cho Grid status check)
+pip install requests
+
+# Kiểm tra cài đặt thành công
+python -c "import selenium; print('Selenium version:', selenium.__version__)"
+```
 ```
 
 ## 📁 CẤU TRÚC
